@@ -1,0 +1,153 @@
+\section{GIT}
+
+\url{https://git-scm.com/book/pl/v1}
+
+\paragraph{git bisect\\}
+Wyszukiwanie punktu pojawienia się błędu:
+\begin{enumerate}
+	\item \texttt{git bisect start} -- rozpocznij wyszukiwanie,
+	\item \texttt{git bisect bad <coś tam>} -- podaj commit w którym występuje błąd,
+	\item \texttt{git bisect good <coś tam>} -- podaj commit w którym błąd nie występuje,
+	\item sprawdzaj stan i sygnalizuj go komendami \texttt{git bisect good} lub \texttt{git bisect bad} do momentu odnalezienia punktu pojawienia się błędu, git sam będzie się przełączał pomiędzy commitami,
+	\item \texttt{git bisect reset} -- zakończ przeszukiwanie.
+\end{enumerate}
+
+\paragraph{git blame \texttt{plik}\\}
+Pokazuje autorów zmian poszczególnych linii w pliku.
+
+\paragraph{git branch\\}
+Zarządzanie gałęziami, bez argumentów wyświetla listę.
+\begin{itemize}
+	\item git branch -d \texttt{nazwa} -- usuwa gałąź.
+	\item git branch -v -- lista gałęzi z ostatnimi commitami.
+	\item git branch - -merged -- lista gałęzi scalonych do aktywnej.
+	\item git branch - -no-merged -- lista gałęzi niescalonych z aktywną.
+\end{itemize}
+
+\paragraph{git checkout \texttt{nazwa}\\}
+Przełącza gałąź.
+\begin{itemize}
+	\item -b -- tworzy i przełącza się na nowo tworzoną gałąź.
+\end{itemize}
+
+\paragraph{git clone \texttt{adres}\\}
+Kopiuje repozytorium z podanego adresu.
+
+\paragraph{git config\\}
+Zarządzanie parametrami.
+\begin{itemize}
+	\item -l -- wyświetla listę aktualnych parametrów.
+	\item git config user.name ''XXX'' -- ustawianie użytkownika.
+	\item git config user.email ''YYY'' -- ustawianie adresu użytkownika.
+	\item git config - -bool core.bare true -- repozytorium bazowe.
+	\item git config core.editor -- ustawia edytor tekstu.
+\end{itemize}
+
+\paragraph{git commit}
+Zapisuje zmiany.
+\begin{itemize}
+	\item - -amend -- poprawka do poprzedniego commita.
+\end{itemize}
+
+\paragraph{git describe\\}
+Tworzy tekst opisujący wersję względem ostatniego tagu.
+
+\paragraph{git diff\\}
+Wyświetla zmiany w obserwowanych plikach.
+\begin{itemize}
+	\item - -cached -- wyświetla zmiany w buforze względem ostatniego commita.
+\end{itemize}
+
+\paragraph{git fetch\\}
+Pobiera dane ze źródła ale ich nie scala.
+
+\paragraph{git help \texttt{polecenie}\\}
+Wyświetla pomoc do polecenia.
+
+\paragraph{git init}
+Tworzy nowe, puste repozytorium gita.
+\begin{itemize}
+	\item - -bare -- repozytorium bazowe.
+\end{itemize}
+
+\paragraph{git log\\}
+Wyświetla historię.
+\begin{itemize}
+	\item - -oneline
+	\item - -graph
+	\item - -decorate
+	\item - -all
+\end{itemize}
+
+\paragraph{git merge \texttt{gałąź}\\}
+Scala wskazaną gałąź z aktywną gałęzią.
+
+\paragraph{git mergetool\\}
+Uruchamia narzędzie do scalania.
+\begin{itemize}
+	\item - -tool=\texttt{narzędzie} -- wskazuje konkretne narzędzie do scalania.
+\end{itemize}
+
+\paragraph{git pull \texttt{index} \texttt{branch}\\}
+Próbuje automatycznie pobrać dane ze źródła i scalić z aktualną gałęzią.
+
+\paragraph{git push \texttt{index} \texttt{branch}\\}
+Próbuje wysłać aktualną gałąź do repozytorium źródłowego.
+\begin{itemize}
+	\item - -tags -- wysyła listę tagów.
+\end{itemize}
+
+\paragraph{git reflog\\}
+Wyświetla logi gita.
+
+\paragraph{git remote\\}
+Ustawienia repozytorium źródłowego.
+\begin{itemize}
+	\item -v -- wyświetla listę.
+	\item git remote show \texttt{indeks} -- wyświetla dane o wskazanym źródle.
+	\item git remote add \texttt{indeks} \texttt{adres} -- dodaje źródło.
+\end{itemize}
+
+\paragraph{git reset --hard \texttt{commit\_nr}\\}
+Przełączenie wskaźnika HEAD na dowolny commit.
+
+\paragraph{git rm --cached \texttt{plik}\\}
+Usuwa wskazany plik z repozytorium.
+
+\paragraph{git show \texttt{commit\_nr} / \texttt{commit} / \texttt{etykieta}\\}
+Wyświetla informacje o wskazanym obiekcie.
+
+\paragraph{git show-branch\\}
+Wyświetla listę gałęzi.
+\begin{itemize}
+	\item - -all
+	\item - -list
+\end{itemize}
+
+\paragraph{git stash\\}
+Zachowuje aktualne zmiany na stosie, moży być wykorzystany do przenoszenia zmian pomiędzy gałęziami.
+\begin{itemize}
+	\item \texttt{list} -- wyświetla listę zachowanych zmian,
+	\item \texttt{pop} -- wczytuje zachowane zmiany ze stosu,
+	\item \texttt{drop} -- porzuca zmiany zachowane na stosie.
+\end{itemize}
+
+\paragraph{git show <arg>\\}
+Opisuje wskazany obiekt, bez argumentu opisze ostatni commit.
+
+\paragraph{git shortlog\\}
+Wyświetla listę commitów dla poszczególnych autorów.
+\begin{itemize}
+	\item \texttt{-s} -- wyświetla tylko liczbę commitów danego autora,
+	\item \texttt{-n} -- sortuje autorów według liczby commitów.
+\end{itemize}
+
+\paragraph{git tag\\}
+Wyświetla listę tagów.
+\begin{itemize}
+	\item -a \texttt{etykieta} -m''\texttt{opis}'' -- dodaje tag z opisem.
+	\item - -list
+	\item  - -delete \texttt{etykieta}
+	\item git tag \texttt{etykieta} -- dodaje prosty tag.
+\end{itemize}
+
